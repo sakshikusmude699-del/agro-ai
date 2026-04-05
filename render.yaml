@@ -1,0 +1,27 @@
+# render.yaml — Render.com deployment config
+# Place this in the ROOT of your repository
+
+services:
+  - type: web
+    name: agrosmart-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt && python ../ml/train.py
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: MONGODB_URI
+        sync: false          # Set manually in Render dashboard
+      - key: JWT_SECRET
+        generateValue: true  # Auto-generate a secure value
+      - key: OPENWEATHER_API_KEY
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: FRONTEND_URL
+        sync: false          # Set to your Vercel URL
+    healthCheckPath: /health
+    autoDeploy: true

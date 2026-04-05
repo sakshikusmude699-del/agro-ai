@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Environment files (NEVER commit secrets)
+.env
+.env.local
+.env.production
+
+# ML artifacts (large binary files — regenerate via train.py)
+ml/artifacts/*.pkl
+ml/data/*.csv
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
